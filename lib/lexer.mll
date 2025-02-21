@@ -13,5 +13,6 @@ rule read_token = parse
   | "or" { OR }
   | "(" { LPAR }
   | ")" { RPAR }
+  | "//" [^ '\n']* { read_token lexbuf }
   | eof { EOF }
   | _ { failwith "unexpected character" }
